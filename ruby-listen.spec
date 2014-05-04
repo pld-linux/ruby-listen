@@ -6,7 +6,7 @@
 Summary:	Listen to file modifications
 Name:		ruby-%{pkgname}
 Version:	0.4.7
-Release:	0.1
+Release:	0.2
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
@@ -34,14 +34,18 @@ the changes. Works everywhere!
 %setup -q -n %{pkgname}-%{version} -a1
 
 %build
+# write .gemspec
+%__gem_helper spec
+
 %if %{with tests}
 rspec spec
 %endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_specdir}}
 cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+cp -p %{pkgname}-%{version}.gemspec $RPM_BUILD_ROOT%{ruby_specdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -51,3 +55,4 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md CHANGELOG.md
 %{ruby_vendorlibdir}/%{pkgname}.rb
 %{ruby_vendorlibdir}/%{pkgname}
+%{ruby_specdir}/%{pkgname}-%{version}.gemspec
