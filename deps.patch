@@ -1,0 +1,28 @@
+Remove the hardcoded dependencies.
+they are platform specific and not needed.
+
+https://github.com/guard/listen/pull/54
+
+--- a/specifications/listen-0.4.7.gemspec
++++ b/specifications/listen-0.4.7.gemspec
+@@ -19,20 +19,11 @@
+     s.specification_version = 3
+ 
+     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+-      s.add_runtime_dependency(%q<rb-fsevent>, ["~> 0.9.1"])
+-      s.add_runtime_dependency(%q<rb-inotify>, ["~> 0.8.8"])
+-      s.add_runtime_dependency(%q<rb-fchange>, ["~> 0.0.5"])
+       s.add_development_dependency(%q<bundler>, [">= 0"])
+     else
+-      s.add_dependency(%q<rb-fsevent>, ["~> 0.9.1"])
+-      s.add_dependency(%q<rb-inotify>, ["~> 0.8.8"])
+-      s.add_dependency(%q<rb-fchange>, ["~> 0.0.5"])
+       s.add_dependency(%q<bundler>, [">= 0"])
+     end
+   else
+-    s.add_dependency(%q<rb-fsevent>, ["~> 0.9.1"])
+-    s.add_dependency(%q<rb-inotify>, ["~> 0.8.8"])
+-    s.add_dependency(%q<rb-fchange>, ["~> 0.0.5"])
+     s.add_dependency(%q<bundler>, [">= 0"])
+   end
+ end
