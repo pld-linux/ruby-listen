@@ -5,20 +5,24 @@
 %define	pkgname	listen
 Summary:	Listen to file modifications
 Name:		ruby-%{pkgname}
-Version:	0.4.7
-Release:	0.4
+Version:	2.7.1
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	https://github.com/guard/listen/archive/v%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	4fd1549ecf72c0ec84659fb28bd15833
+# Source0-md5:	2b7d0fefb774f53cb4107402ec389d87
 Patch0:		deps.patch
 URL:		https://github.com/guard/listen
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.656
 %if %{with tests}
-BuildRequires:	ruby-bundler
-BuildRequires:	ruby-rspec
+BuildRequires:	ruby-bundler >= 1.3.5
+BuildRequires:	ruby-rake
+BuildRequires:	ruby-rspec >= 2.14
+BuildRequires:	ruby-rspec-retry
 %endif
+Requires:	ruby-celluloid >= 0.15.2
+Requires:	ruby-celluloid-io >= 0.15.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
