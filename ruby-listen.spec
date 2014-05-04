@@ -6,15 +6,11 @@
 Summary:	Listen to file modifications
 Name:		ruby-%{pkgname}
 Version:	0.4.7
-Release:	0.2
+Release:	0.4
 License:	MIT
 Group:		Development/Languages
-Source0:	http://rubygems.org/downloads/%{pkgname}-%{version}.gem
-# Source0-md5:	068e217a5d4e28690370c4f8eaa2b73e
-# git clone https://github.com/guard/listen.git && cd listen
-# git checkout v0.4.7
-# tar czvf listen-0.4.7-specs.tar.gz spec/
-Source1:	listen-%{version}-specs.tar.gz
+Source0:	https://github.com/guard/listen/archive/v%{version}/%{pkgname}-%{version}.tar.gz
+# Source0-md5:	4fd1549ecf72c0ec84659fb28bd15833
 Patch0:		deps.patch
 URL:		https://github.com/guard/listen
 BuildRequires:	rpm-rubyprov
@@ -31,11 +27,15 @@ The Listen gem listens to file modifications and notifies you about
 the changes. Works everywhere!
 
 %prep
-%setup -q -n %{pkgname}-%{version} -a1
+%setup -q -n %{pkgname}-%{version}
+%patch0 -p1
 
 %build
-# write .gemspec
-%__gem_helper spec
+# make gemspec self-contained
+ruby -r rubygems -e 'spec = eval(File.read("%{pkgname}.gemspec"))
+	File.open("%{pkgname}-%{version}.gemspec", "w") do |file|
+	file.puts spec.to_ruby_for_cache
+end'
 
 %if %{with tests}
 rspec spec
