@@ -3,6 +3,9 @@ they are platform specific and not needed.
 
 https://github.com/guard/listen/pull/54
 
+the fix is committed, but visible in .gemspec:
+https://github.com/guard/listen/commit/2b7e3521629e75be13f703af89d66a8293921caf
+
 --- listen-2.7.11/listen.gemspec~	2014-09-26 20:31:45.000000000 +0300
 +++ listen-2.7.11/listen.gemspec	2014-12-14 19:41:38.193631843 +0200
 @@ -22,8 +22,6 @@
