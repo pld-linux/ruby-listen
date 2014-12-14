@@ -5,12 +5,12 @@
 %define	pkgname	listen
 Summary:	Listen to file modifications
 Name:		ruby-%{pkgname}
-Version:	2.7.1
+Version:	2.7.11
 Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	https://github.com/guard/listen/archive/v%{version}/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	2b7d0fefb774f53cb4107402ec389d87
+# Source0-md5:	2b1378df84cd0e5ab94d172c3a92d70d
 Patch0:		deps.patch
 URL:		https://github.com/guard/listen
 BuildRequires:	rpm-rubyprov
