@@ -6,7 +6,7 @@
 Summary:	Listen to file modifications
 Name:		ruby-%{pkgname}
 Version:	2.7.11
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages
 Source0:	https://github.com/guard/listen/archive/v%{version}/%{pkgname}-%{version}.tar.gz
