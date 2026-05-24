@@ -6,7 +6,7 @@
 Summary:	Listen to file modifications
 Name:		ruby-%{pkgname}
 Version:	3.10.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/Languages
 Source0:	https://rubygems.org/downloads/%{pkgname}-%{version}.gem
